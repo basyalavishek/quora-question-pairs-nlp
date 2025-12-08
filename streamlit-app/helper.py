@@ -1,3 +1,4 @@
+import os
 import re
 from bs4 import BeautifulSoup
 import distance
@@ -9,8 +10,11 @@ from nltk.corpus import stopwords
 nltk.download('stopwords')
 
 
-cv = pickle.load(open('cv.pkl','rb'))
+BASE_DIR = os.path.dirname(__file__)
 
+# Load CountVectorizer
+cv_path = os.path.join(BASE_DIR, 'cv.pkl')
+cv = pickle.load(open(cv_path, 'rb'))
 
 def test_common_words(q1,q2):
     w1 = set(map(lambda word: word.lower().strip(), q1.split(" ")))

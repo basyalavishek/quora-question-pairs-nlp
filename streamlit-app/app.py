@@ -1,9 +1,13 @@
+import os
 import streamlit as st
 import helper
 import pickle
 
-model = pickle.load(open('model.pkl','rb'))
+BASE_DIR = os.path.dirname(__file__)
 
+# Load model
+model_path = os.path.join(BASE_DIR, 'model.pkl')
+model = pickle.load(open(model_path, 'rb'))
 st.header('Duplicate Question Pairs')
 
 q1 = st.text_input('Enter question 1')
